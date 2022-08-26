@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+    <title>thymeleaf layout</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+    <!-- content script -->
+    <th:block layout:fragment="css"></th:block>
+    <!-- content script -->
+    <th:block layout:fragment="script"></th:block>
+</head>
+
+<body>
+<a>layout - defualt 자리입니다 </a>
+<!-- header fragment 사용 // th:replace 뒷 부분에 해당하는걸로 코드로 바꾼다는것-->
+<th:block th:replace="thymeleaf/fragment-header :: headerFragment"></th:block>
+
+<!-- content fragment 사용 -->
+<th:block layout:fragment="content"></th:block>
+
+<!-- footer fragment 사용 -->
+<th:block th:replace="thymeleaf/fragment-footer :: footerFragment"></th:block>
+
+
+</body>
+</html>

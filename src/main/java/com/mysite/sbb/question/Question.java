@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.mysite.sbb.answer.Answer;
+import com.mysite.sbb.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -31,4 +32,15 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = REMOVE)
     private List<Answer> answerList;
+
+    public Question() {
+    }
+
+    public Question(String subject, String content) {
+        this.subject = subject;
+        this.content = content;
+    }
+
+    @ManyToOne
+    private SiteUser author;
 }

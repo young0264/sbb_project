@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import com.mysite.sbb.question.Question;
+import com.mysite.sbb.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -26,4 +27,7 @@ public class Answer {
 
     @ManyToOne // 한개의 질문에 여러개의 답변이 달릴 수 있어
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }
