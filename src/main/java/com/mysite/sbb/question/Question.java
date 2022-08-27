@@ -29,6 +29,7 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
 
     @OneToMany(mappedBy = "question", cascade = REMOVE)
     private List<Answer> answerList;

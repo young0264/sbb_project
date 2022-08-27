@@ -25,6 +25,8 @@ public class Answer {
     @CreatedDate
     private LocalDateTime createDate;
 
+    private LocalDateTime modifyDate;
+
     @ManyToOne // 한개의 질문에 여러개의 답변이 달릴 수 있어
     private Question question;
 
