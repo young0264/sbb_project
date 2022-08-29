@@ -46,6 +46,7 @@ public class QuestionController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String questionCreate(@ModelAttribute("questionForm") QuestionForm questionForm) {
+
         return "question_form";
     }
 
