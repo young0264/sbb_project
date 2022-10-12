@@ -1,4 +1,4 @@
 # sbb_project
 
-### SBB는 Spring Boot Board의 약자로 
-### spring security를 사용한 하나의 상용가능한 웹사이트 구현이 목표인 프로젝트입니다.
+### 점프투스프링부트 책을 보고 게시판 웹사이트의 구현과 배포까지를 목표로 하고 있습니다.
+### 9/30 : ssl인증서를 받아 aws light sail을 이용한 배포까지 완료하였습니다.
