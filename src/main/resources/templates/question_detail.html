@@ -32,8 +32,8 @@
                    sec:authorize="isAuthenticated()"
                    th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
                    th:text="수정"></a>
-                <a href="javascript:void(0);" th:data-uri="@{|/question/delete/${question.id}|}"
-                   class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                <a href="javascript:void(0);" th:data-uri="@{|/question/delete/${question.id}|}" class="delete btn btn-sm btn-outline-secondary"
+                   sec:authorize="isAuthenticated()"
                    th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
                    th:text="삭제"></a>
             </div>
@@ -41,10 +41,10 @@
         </div>
     </div>
 
-    <!-- 답변의 갯수 표시 -->
+    <!-- 댓글 답변의 갯수 표시 -->
     <h5 class="border-bottom my-3 py-2"
         th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
-    <div class="card my-3" th:replace="q-fragment :: q-Fragment(${question})">
+    <div class="card my-3" th:replace="q-fragment :: here_is_fragment(${question})">
         <!-- 답변 반복 시작 -->
         <!--    <div class="card my-3" th:each="answer : ${question.answerList}">-->
         <!--        <div class="card-body">-->

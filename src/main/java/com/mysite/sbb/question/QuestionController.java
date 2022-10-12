@@ -28,11 +28,11 @@ public class QuestionController {
     private final UserService userService;
 
     @RequestMapping("/list")
-    public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
-//        List<Question> questionList = this.questionService.getList();
-//        model.addAttribute("questionList", questionList);
-        Page<Question> paging = this.questionService.getList(page);
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+                       @RequestParam(value = "kw", defaultValue = "") String kw) {
+        Page<Question> paging = this.questionService.getList(page,kw);
         model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
         return "question_list";
     }
 
@@ -43,10 +43,10 @@ public class QuestionController {
         model.addAttribute("question", question);
         return "question_detail";
     }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String questionCreate(@ModelAttribute("questionForm") QuestionForm questionForm) {
-
         return "question_form";
     }
 
@@ -63,11 +63,12 @@ public class QuestionController {
         this.questionService.create(questionForm.getSubject(), questionForm.getContent(), siteUser);
         return "redirect:/question/list"; //질문 저장후 질문목록으로 이동
     }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
     public String questionModify(QuestionForm questionForm, @PathVariable("id") Integer id, Principal principal) {
         Question question = this.questionService.getQuestion(id);
-        if(!question.getAuthor().getUsername().equals(principal.getName())) {
+        if (!question.getAuthor().getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         questionForm.setSubject(question.getSubject());
